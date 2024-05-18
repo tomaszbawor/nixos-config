@@ -70,7 +70,6 @@
   services.printing.enable = true;
 
   ## Video
-
   hardware.opengl = {
     enable = true;
     driSupport = true;
@@ -86,7 +85,7 @@
 
     open = false;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.production;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
 
