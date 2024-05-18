@@ -2,14 +2,21 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, home-manager, ... }:
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-	<home-manager/nixos>
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
+
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -87,9 +94,6 @@
     isNormalUser = true;
     description = "tomasz";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
   };
 
   # Allow unfree packages
@@ -99,109 +103,110 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    #  wget
   ];
 
-  home-manager.users.tomasz = {pkgs, ...}:{
+  home-manager.users.tomasz = { pkgs, ... }: {
 
-programs.home-manager.enable = true;
+    programs.home-manager.enable = true;
 
-nixpkgs.config = {
-allowUnfreePredicate = _: true;
-permittedInsecurePackages = [
-      "electron-25.9.0"
-      "electron-24.8.6"
-    ];};
+    nixpkgs.config = {
+      allowUnfreePredicate = _: true;
+      permittedInsecurePackages = [
+        "electron-25.9.0"
+        "electron-24.8.6"
+      ];
+    };
 
-home.packages = [
+    home.packages = [
 
-    # terminal tools
-    pkgs.nixpkgs-fmt
-    pkgs.jq
-    pkgs.ripgrep
-    pkgs.bat
-    pkgs.eza
-    pkgs.neovim
+      # terminal tools
+      pkgs.nixpkgs-fmt
+      pkgs.jq
+      pkgs.ripgrep
+      pkgs.bat
+      pkgs.eza
+      pkgs.neovim
 
-    # git
-    pkgs.diff-so-fancy
-    pkgs.lazygit
+      # git
+      pkgs.diff-so-fancy
+      pkgs.lazygit
 
-    # programming
-    pkgs.rustup
-    pkgs.nodejs_20
+      # programming
+      pkgs.rustup
+      pkgs.nodejs_20
 
-    # applications
-    pkgs.slack
-    pkgs._1password-gui
-    pkgs.obsidian
-    pkgs.bruno
+      # applications
+      pkgs.slack
+      pkgs._1password-gui
+      pkgs.obsidian
+      pkgs.bruno
 
-    # fonts
-    (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+      # fonts
+      (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
 
-  ];
+    ];
 
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    oh-my-zsh = {
+    programs.zsh = {
       enable = true;
+      enableCompletion = true;
+      oh-my-zsh = {
+        enable = true;
+      };
+      shellAliases = {
+        ls = "eza";
+        cat = "bat";
+        lg = "lazygit";
+
+        vim = "nvim";
+        v = "nvim .";
+        # Git 
+        gdc = "git diff --cached";
+        glog = "git log --oneline";
+
+        # Gradle
+        gb = "./gradlew build";
+        gkf = "./gradlew ktlintFormat";
+      };
     };
-    shellAliases = {
-      ls = "eza";
-      cat = "bat";
-      lg = "lazygit";
 
-      vim = "nvim";
-      v = "nvim .";
-      # Git 
-      gdc = "git diff --cached";
-      glog = "git log --oneline";
-
-      # Gradle
-      gb = "./gradlew build";
-      gkf = "./gradlew ktlintFormat";
+    programs.zoxide = {
+      enable = true;
+      enableZshIntegration = true;
     };
+
+    programs.fzf = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
+    programs.starship = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
+    # Git Configuration 
+    programs.git = {
+      enable = true;
+      userName = "Tomasz Bawor";
+      userEmail = "bawortomasz@gmail.com";
+    };
+
+    programs.java = {
+      enable = true;
+      package = pkgs.temurin-bin-21;
+    };
+
+    programs.go.enable = true;
+
+    programs.chromium.enable = true;
+
+    home.sessionVariables = {
+      EDITOR = "nvim";
+    };
+    home.stateVersion = "23.11";
+
   };
-
-  programs.zoxide = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
-  programs.fzf = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
-  programs.starship = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
-  # Git Configuration 
-  programs.git = {
-    enable = true;
-    userName = "Tomasz Bawor";
-    userEmail = "bawortomasz@gmail.com";
-  };
-
-  programs.java = {
-    enable = true;
-    package = pkgs.temurin-bin-21;
-  };
-
-  programs.go.enable = true;
-
-  programs.chromium.enable = true;
-
-  home.sessionVariables = {
-    EDITOR = "nvim";
-  };
-home.stateVersion = "23.11";
-
-};
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
