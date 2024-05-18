@@ -117,9 +117,11 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
 
   nixpkgs.config = {
     allowUnfreePredicate = _: true;
