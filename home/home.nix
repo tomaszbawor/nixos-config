@@ -106,4 +106,8 @@
 
   home.stateVersion = "23.11";
 
+  home.file = {
+   ".config/nvim" = {source = ./../nvim; recursive = true;};
+  };
+
 }
