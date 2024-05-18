@@ -1,15 +1,15 @@
-{ pkgs, ... }:
+{ hyprland, pkgs, ... }:
 
 {
+
+  imports = [
+    hyprland.homeManagerModules.default
+  ];
 
   programs.home-manager.enable = true;
 
   nixpkgs.config = {
     allowUnfreePredicate = _: true;
-    permittedInsecurePackages = [
-      "electron-25.9.0"
-      "electron-24.8.6"
-    ];
   };
 
   home.packages = [
@@ -97,9 +97,16 @@
 
   programs.chromium.enable = true;
 
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+    };
+  };
+
   home.sessionVariables = {
     EDITOR = "nvim";
   };
+
   home.stateVersion = "23.11";
 
 }
