@@ -12,10 +12,18 @@
     nixosConfigurations = {
       desktop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [ ./configuration.nix home-manager.nixosModules.home-manager ];
-	specialArgs = {
-	inherit inputs ;
-	};
+        modules = [
+          ./nixos/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.tomasz = import ./home/home.nix;
+          }
+        ];
+        specialArgs = {
+          inherit inputs;
+        };
       };
     };
   };
