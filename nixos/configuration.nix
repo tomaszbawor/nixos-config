@@ -141,6 +141,9 @@
       pkgs._1password-gui
       pkgs.obsidian
       pkgs.bruno
+      pkgs.brave
+      pkgs.vscode
+
 
       # fonts
       (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
