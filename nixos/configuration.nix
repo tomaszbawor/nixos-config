@@ -113,7 +113,7 @@
   users.users.tomasz = {
     isNormalUser = true;
     description = "tomasz";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
 
   programs.zsh.enable = true;
@@ -140,6 +140,12 @@
     enable = true;
     channel = "https://nixos.org/channels/nixos-23.11";
   };
+
+ # Steam
+  programs.steam.enable = true;
+
+  # Docker
+  virtualisation.docker.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
