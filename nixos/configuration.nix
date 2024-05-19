@@ -20,8 +20,27 @@
   };
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  # boot.loader.systemd-boot.enable = true;
+  # boot.loader.efi.canTouchEfiVariables = true;
+
+
+  boot.loader.grub.enable = true;
+  boot.loader.grub.devices = [ "nodev" ];
+  boot.loader.grub.efiInstallAsRemovable = true;
+  boot.loader.grub.efiSupport = true;
+  boot.loader.grub.useOSProber = true;
+
+  boot.loader.grub.theme = pkgs.stdenv.mkDerivation {
+    pname = "distro-grub-themes";
+    version = "3.1";
+    src = pkgs.fetchFromGitHub {
+      owner = "AdisonCavani";
+      repo = "distro-grub-themes";
+      rev = "v3.1";
+      hash = "sha256-ZcoGbbOMDDwjLhsvs77C7G7vINQnprdfI37a9ccrmPs=";
+    };
+    installPhase = "cp -r customize/nixos $out";
+  };
 
 
   networking.hostName = "tomasz-nixos-desktop"; # Define your hostname.
@@ -44,25 +63,24 @@
     LC_TIME = "pl_PL.UTF-8";
   };
 
-  services.xserver =
-    {
+  services.xserver = {
       enable = true;
       xkb = {
         layout = "pl";
         variant = "";
       };
       videoDrivers = [ "nvidia" ];
-    }
+    };
 
 
 
-      # Enable the GNOME Desktop Environment.
-      #services.xserver.displayManager.gdm.enable = true;
-      #services.xserver.desktopManager.gnome.enable = true;
+  # Enable the GNOME Desktop Environment.
+  #services.xserver.displayManager.gdm.enable = true;
+  #services.xserver.desktopManager.gnome.enable = true;
 
 
-      # Configure console keymap
-      console.keyMap = "pl2";
+  # Configure console keymap
+  console.keyMap = "pl2";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -81,7 +99,7 @@
 
     open = false;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.latest;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
   # Enable sound with pipewire.
@@ -111,6 +129,11 @@
     extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
 
+  environment.variables = {
+     NIXOS_OZONE_WL = "1";
+     NIXPKGS_ALLOW_UNFREE = "1";
+  };
+
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
@@ -124,6 +147,8 @@
       "electron-24.8.6"
     ];
   };
+
+  programs.hyprland.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

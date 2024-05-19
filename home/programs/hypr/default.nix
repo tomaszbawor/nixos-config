@@ -14,8 +14,9 @@
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
+    # enableNvidiaPatches = false; # aparently no longer needeeed
     extraConfig = ''
-
+  
     # Monitor
     monitor=DP-1,1920x1080@165,auto,1
 
