@@ -9,6 +9,7 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./hosts/desktop
     ];
 
   nix = {
@@ -22,14 +23,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+
   networking.hostName = "tomasz-nixos-desktop"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
   networking.networkmanager.enable = true;
 
   # Set your time zone.
@@ -37,7 +32,6 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "pl_PL.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "pl_PL.UTF-8";
     LC_IDENTIFICATION = "pl_PL.UTF-8";
@@ -50,21 +44,25 @@
     LC_TIME = "pl_PL.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services.xserver =
+    {
+      enable = true;
+      xkb = {
+        layout = "pl";
+        variant = "";
+      };
+      videoDrivers = [ "nvidia" ];
+    }
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "pl";
-    variant = "";
-  };
 
-  # Configure console keymap
-  console.keyMap = "pl2";
+      # Enable the GNOME Desktop Environment.
+      #services.xserver.displayManager.gdm.enable = true;
+      #services.xserver.desktopManager.gnome.enable = true;
+
+
+      # Configure console keymap
+      console.keyMap = "pl2";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -76,8 +74,6 @@
     driSupport32Bit = true;
   };
 
-  services.xserver.videoDrivers = [ "nvidia" ];
-
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = false;
@@ -85,9 +81,8 @@
 
     open = false;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
   };
-
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -141,7 +136,7 @@
     channel = "https://nixos.org/channels/nixos-23.11";
   };
 
- # Steam
+  # Steam
   programs.steam.enable = true;
 
   # Docker
