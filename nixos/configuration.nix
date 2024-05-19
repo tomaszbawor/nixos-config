@@ -85,7 +85,7 @@
 
     open = false;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
 
@@ -141,7 +141,7 @@
     channel = "https://nixos.org/channels/nixos-23.11";
   };
 
- # Steam
+  # Steam
   programs.steam.enable = true;
 
   # Docker
