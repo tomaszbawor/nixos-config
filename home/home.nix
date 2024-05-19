@@ -27,13 +27,16 @@
     pkgs.rustup
     pkgs.nodejs_20
 
+    # Ides
+    pkgs.vscode
+    pkgs.jetbrains.idea-ultimate
+
     # applications
     pkgs.slack
     pkgs._1password-gui
     pkgs.obsidian
     pkgs.bruno
     pkgs.brave
-    pkgs.vscode
 
     # fonts
     (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
@@ -46,6 +49,7 @@
     oh-my-zsh = {
       enable = true;
     };
+    autosuggestion.enable = true;
     shellAliases = {
       ls = "eza";
       cat = "bat";
