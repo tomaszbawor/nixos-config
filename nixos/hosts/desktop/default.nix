@@ -11,7 +11,6 @@
     };
   };
 
-
   programs.dconf.enable = true;
 
   xdg.portal = {
