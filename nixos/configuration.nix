@@ -65,7 +65,11 @@
   # xServer
   services.xserver = {
     enable = true; # Enable the X11 windowing system.
-    #displayManager.gdm.enable = true; # Enable the GNOME Desktop Environment.
+    displayManager = {
+      gdm.enable = true; # Enable the GNOME Desktop Environment.
+      gdm.wayland = true;
+    };
+
     #desktopManager.gnome.enable = true;
     xkb = {
       # Keyboard layout
@@ -140,6 +144,7 @@
   };
 
   programs.hyprland.enable = true;
+  programs.hyprland.xwayland.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
