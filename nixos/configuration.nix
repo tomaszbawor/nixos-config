@@ -22,15 +22,11 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "tomasz-nixos-desktop"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
+  # Networking
+  networking = {
+    hostName = "tomasz-nixos-desktop"; # Define your hostname.
+    networkmanager.enable = true;
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
@@ -50,17 +46,17 @@
     LC_TIME = "pl_PL.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "pl";
-    variant = "";
+  # xServer
+  services.xserver = {
+    enable = true; # Enable the X11 windowing system.
+    displayManager.gdm.enable = true; # Enable the GNOME Desktop Environment.
+    desktopManager.gnome.enable = true;
+    xkb = {
+      # Keyboard layout
+      layout = "pl";
+      variant = "";
+    };
+    videoDrivers = [ "nvidia" ];
   };
 
   # Configure console keymap
@@ -76,8 +72,6 @@
     driSupport32Bit = true;
   };
 
-  services.xserver.videoDrivers = [ "nvidia" ];
-
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = false;
@@ -87,7 +81,6 @@
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
-
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -106,24 +99,19 @@
     #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.tomasz = {
-    isNormalUser = true;
-    description = "tomasz";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+  # Define a user account
+  users = {
+    users.tomasz = {
+      isNormalUser = true;
+      description = "tomasz";
+      extraGroups = [ "networkmanager" "wheel" "docker" ];
+    };
+    defaultUserShell = pkgs.zsh;
   };
 
-  programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   nixpkgs.config = {
-    allowUnfreePredicate = _: true;
+    allowUnfree = true;
     permittedInsecurePackages = [
       "electron-25.9.0"
       "electron-24.8.6"
@@ -133,7 +121,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    vim
+    wget
   ];
 
   system.autoUpgrade = {
@@ -141,8 +130,11 @@
     channel = "https://nixos.org/channels/nixos-23.11";
   };
 
-  # Steam
-  programs.steam.enable = true;
+  # Programs
+  programs = {
+    steam.enable = true; # Enable Steam
+    zsh.enable = true; # Install ZSH to the system
+  };
 
   # Docker
   virtualisation.docker.enable = true;
