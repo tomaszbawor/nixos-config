@@ -67,10 +67,12 @@
     enable = true; # Enable the X11 windowing system.
     displayManager = {
       gdm.enable = true; # Enable the GNOME Desktop Environment.
-      gdm.wayland = true;
     };
 
-    #desktopManager.gnome.enable = true;
+    desktopManager = {
+      gnome.enable = true;
+    };
+
     xkb = {
       # Keyboard layout
       layout = "pl";
@@ -99,7 +101,7 @@
 
     open = false;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.production;
   };
 
   # Enable sound with pipewire.
@@ -137,6 +139,7 @@
 
   nixpkgs.config = {
     allowUnfree = true;
+    nvidia.acceptLicense = true;
     permittedInsecurePackages = [
       "electron-25.9.0"
       "electron-24.8.6"
