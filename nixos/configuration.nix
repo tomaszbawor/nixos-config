@@ -20,6 +20,9 @@
   };
 
   # Bootloader.
+  boot.loader.efi.efiSysMountPoint = "/boot";
+
+
   boot.loader.grub.enable = true;
   boot.loader.grub.devices = [ "nodev" ];
   boot.loader.grub.efiInstallAsRemovable = true;
@@ -101,7 +104,7 @@
 
     open = false;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.production;
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
   };
 
   # Enable sound with pipewire.
@@ -133,7 +136,6 @@
   };
 
   environment.variables = {
-    NIXOS_OZONE_WL = "1";
     NIXPKGS_ALLOW_UNFREE = "1";
   };
 
@@ -163,7 +165,11 @@
 
   # Programs
   programs = {
-    steam.enable = true; # Enable Steam
+    steam = {
+      enable = true; # Enable Steam
+      gamescopeSession.enable = true;
+    };
+
     zsh.enable = true; # Install ZSH to the system
   };
 

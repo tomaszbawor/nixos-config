@@ -15,7 +15,7 @@
 
       font = {
         normal = {
-          family = "Hack";
+          family = "FiraCode Nerd Font Mono";
           style = "Medium";
         };
         size = 12;
@@ -26,9 +26,6 @@
           x = 12;
           y = 12;
         };
-      };
-      shell = {
-        program = "/usr/bin/env zsh";
       };
     };
   };
