@@ -7,20 +7,18 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
   };
 
-  outputs = { self, nixpkgs, home-manager, hyprland, ... } @ inputs: {
+  outputs = { self, nixpkgs, home-manager, ... } @ inputs: {
 
     nixosConfigurations = {
       desktop = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
         specialArgs = {
-          inherit inputs hyprland;
+          inherit inputs;
         };
         modules = [
           ./nixos/configuration.nix
-          hyprland.nixosModules.default
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

@@ -1,9 +1,8 @@
-{ hyprland, pkgs, ... }:
+{ pkgs, ... }:
 
 {
 
   imports = [
-    hyprland.homeManagerModules.default
     ./programs
   ];
 
