@@ -43,8 +43,11 @@
   };
 
 
-  networking.hostName = "tomasz-nixos-desktop"; # Define your hostname.
-  networking.networkmanager.enable = true;
+  # Networking
+  networking = {
+    hostName = "tomasz-nixos-desktop"; # Define your hostname.
+    networkmanager.enable = true;
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
@@ -63,21 +66,18 @@
     LC_TIME = "pl_PL.UTF-8";
   };
 
+  # xServer
   services.xserver = {
-      enable = true;
-      xkb = {
-        layout = "pl";
-        variant = "";
-      };
-      videoDrivers = [ "nvidia" ];
+    enable = true; # Enable the X11 windowing system.
+    #displayManager.gdm.enable = true; # Enable the GNOME Desktop Environment.
+    #desktopManager.gnome.enable = true;
+    xkb = {
+      # Keyboard layout
+      layout = "pl";
+      variant = "";
     };
-
-
-
-  # Enable the GNOME Desktop Environment.
-  #services.xserver.displayManager.gdm.enable = true;
-  #services.xserver.desktopManager.gnome.enable = true;
-
+    videoDrivers = [ "nvidia" ];
+  };
 
   # Configure console keymap
   console.keyMap = "pl2";
@@ -119,14 +119,15 @@
     #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.tomasz = {
-    isNormalUser = true;
-    description = "tomasz";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+  # Define a user account
+  users = {
+    users.tomasz = {
+      isNormalUser = true;
+      description = "tomasz";
+      extraGroups = [ "networkmanager" "wheel" "docker" ];
+    };
+    defaultUserShell = pkgs.zsh;
   };
 
   environment.variables = {
@@ -134,14 +135,8 @@
      NIXPKGS_ALLOW_UNFREE = "1";
   };
 
-  programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   nixpkgs.config = {
-    allowUnfreePredicate = _: true;
+    allowUnfree = true;
     permittedInsecurePackages = [
       "electron-25.9.0"
       "electron-24.8.6"
@@ -153,7 +148,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    vim
+    wget
   ];
 
   system.autoUpgrade = {
@@ -161,8 +157,11 @@
     channel = "https://nixos.org/channels/nixos-23.11";
   };
 
-  # Steam
-  programs.steam.enable = true;
+  # Programs
+  programs = {
+    steam.enable = true; # Enable Steam
+    zsh.enable = true; # Install ZSH to the system
+  };
 
   # Docker
   virtualisation.docker.enable = true;
