@@ -35,7 +35,6 @@
     pkgs.jetbrains.idea-ultimate
 
     # applications
-    pkgs.slack
     pkgs._1password-gui
     pkgs.obsidian
     pkgs.bruno
@@ -44,32 +43,6 @@
     # fonts
     (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
-
-
-
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    oh-my-zsh = {
-      enable = true;
-    };
-    autosuggestion.enable = true;
-    shellAliases = {
-      ls = "eza";
-      cat = "bat";
-      lg = "lazygit";
-
-      vim = "nvim";
-      v = "nvim .";
-      # Git 
-      gdc = "git diff --cached";
-      glog = "git log --oneline";
-
-      # Gradle
-      gb = "./gradlew build";
-      gkf = "./gradlew ktlintFormat";
-    };
-  };
 
   programs.zoxide = {
     enable = true;
@@ -99,8 +72,6 @@
   };
 
   programs.go.enable = true;
-
-  programs.chromium.enable = true;
 
   dconf.settings = {
     "org/gnome/desktop/interface" = {
