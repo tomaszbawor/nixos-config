@@ -1,8 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, hyprland, ... }:
 
 {
 
   imports = [
+    hyprland.homeManagerModules.default
     ./programs
   ];
 
@@ -42,6 +43,9 @@
 
     # fonts
     (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+
+
+    pkgs.swww
   ];
 
   programs.zoxide = {
