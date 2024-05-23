@@ -5,72 +5,21 @@
     ./hyprland-environment.nix
   ];
 
-   home.packages = (with pkgs; [
-
-      #User Apps
-      celluloid
-
-      librewolf
-      cool-retro-term
-      bibata-cursors
-      vscode
-      lollypop
-      lutris
-
-
-      #utils
-      ranger
-      wlr-randr
-      git
-      rustup
-      gnumake
-      catimg
-      curl
-      appimage-run
-      xflux
-      dunst
-      pavucontrol
-      sqlite
-
-      #misc
-      cava
-      rofi
-      nitch
-      wget
-      grim
-      slurp
-      wl-clipboard
-      pamixer
-      mpc-cli
-      tty-clock
-
-      tokyo-night-gtk
-
-    ]) ++ (with pkgs.gnome; [
-      nautilus
-      zenity
-      gnome-tweaks
-      eog
-
-    ]);
-
+  home.packages = with pkgs; [
+    waybar
+    swww
+  ];
 
   #test later systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
   wayland.windowManager.hyprland = {
     enable = true;
-#systemdIntegration = true;
+    systemd.enable = true;
     extraConfig = ''
 
     # Monitor
-    monitor=DP-1,1920x1080@165,auto,1
-
-    # Fix slow startup
-    exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-    exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP 
+    monitor=DP-1,1920x1080@144,0x0,1
 
     # Autostart
-
-    exec-once = hyprctl setcursor Bibata-Modern-Classic 24
     exec-once = dunst
 
     source = /home/tomasz/.config/hypr/colors
@@ -106,20 +55,6 @@
         col.inactive_border = rgba(595959aa)
 
         layout = dwindle
-    }
-
-    decoration {
-
-        rounding = 10
-        blur = true
-        blur_size = 3
-        blur_passes = 1
-        blur_new_optimizations = true
-
-        drop_shadow = true
-        shadow_range = 4
-        shadow_render_power = 3
-        col.shadow = rgba(1a1a1aee)
     }
 
     animations {
@@ -262,3 +197,4 @@
     $color15 = rgba(c3dde7ee)
   '';
 }
+

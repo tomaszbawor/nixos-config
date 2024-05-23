@@ -5,6 +5,8 @@
   imports = [
     hyprland.homeManagerModules.default
     ./programs
+    ./scripts
+    ./themes
   ];
 
   programs.home-manager.enable = true;
@@ -43,9 +45,6 @@
 
     # fonts
     (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-
-
-    pkgs.swww
   ];
 
   programs.zoxide = {

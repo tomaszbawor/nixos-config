@@ -180,7 +180,7 @@
       };
       "clock" = {
         "interval" = 1;
-        "format" = "{:%I:%M %p  %A %b %d}";
+        "format" = "{:%I:%M %p %A %b %d}";
         "tooltip" = true;
         "tooltip-format" = "{=%A; %d %B %Y}\n<tt>{calendar}</tt>";
       };
