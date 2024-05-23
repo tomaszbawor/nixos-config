@@ -101,10 +101,8 @@
     bind = $mainMod, G, fullscreen,
 
 
-    #bind = $mainMod, RETURN, exec, cool-retro-term-zsh
-    bind = $mainMod, RETURN, exec, kitty
-    bind = $mainMod, B, exec, opera --no-sandbox
-    bind = $mainMod, L, exec, firefox 
+    bind = $mainMod, RETURN, exec, alacritty
+    bind = $mainMod, B, exec, brave
     bind = $mainMod, Q, killactive,
     bind = $mainMod, M, exit,
     bind = $mainMod, F, exec, nautilus
