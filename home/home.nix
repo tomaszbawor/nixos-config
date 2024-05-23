@@ -5,7 +5,7 @@
   imports = [
     hyprland.homeManagerModules.default
     ./programs
-    ./scripts
+    # ./scripts
     ./themes
   ];
 

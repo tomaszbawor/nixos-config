@@ -10,6 +10,11 @@
     swww
   ];
 
+  home.file.".config/hypr/scripts" = {
+        source = ./scripts;
+        recursive = true;
+      };
+
   #test later systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
   wayland.windowManager.hyprland = {
     package = pkgs.hyprland;
@@ -19,8 +24,10 @@
     xwayland.enable = true;
     extraConfig = ''
 
+  $hyprScriptsDir = $HOME/.config/hypr/scripts
     # Monitor
-    monitor=,highres,auto,1
+    monitor=DP-2,highres,auto,1
+    monitor=Unknown-1, disable
 
     # Autostart
     exec-once = dunst
@@ -48,26 +55,41 @@
 
     general {
 
-        gaps_in = 5
-        gaps_out = 20
+        gaps_in = 3
+        gaps_out = 8
         border_size = 2
         col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
         col.inactive_border = rgba(595959aa)
+resize_on_border
 
         layout = dwindle
     }
 
-    animations {
-        enabled = yes
+       animations {
+          enabled = true
+          # Animation curves
 
-        bezier = ease,0.4,0.02,0.21,1
-
-        animation = windows, 1, 3.5, ease, slide
-        animation = windowsOut, 1, 3.5, ease, slide
-        animation = border, 1, 6, default
-        animation = fade, 1, 3, ease
-        animation = workspaces, 1, 3.5, ease
-    }
+          bezier = linear, 0, 0, 1, 1
+          bezier = md3_standard, 0.2, 0, 0, 1
+          bezier = md3_decel, 0.05, 0.7, 0.1, 1
+          bezier = md3_accel, 0.3, 0, 0.8, 0.15
+          bezier = overshot, 0.05, 0.9, 0.1, 1.1
+          bezier = crazyshot, 0.1, 1.5, 0.76, 0.92
+          bezier = hyprnostretch, 0.05, 0.9, 0.1, 1.0
+          bezier = fluent_decel, 0.1, 1, 0, 1
+          bezier = easeInOutCirc, 0.85, 0, 0.15, 1
+          bezier = easeOutCirc, 0, 0.55, 0.45, 1
+          bezier = easeOutExpo, 0.16, 1, 0.3, 1
+          # Animation configs
+          animation = windows, 1, 3, md3_decel, popin 60%
+          animation = border, 1, 10, default
+          animation = fade, 1, 2.5, md3_decel
+          # animation = workspaces, 1, 3.5, md3_decel, slide
+          animation = workspaces, 1, 3.5, easeOutExpo, slide
+          # animation = workspaces, 1, 7, fluent_decel, slidefade 15%
+          # animation = specialWorkspace, 1, 3, md3_decel, slidefadevert 15%
+          animation = specialWorkspace, 1, 3, md3_decel, slidevert
+        }
 
     dwindle {
         pseudotile = yes
@@ -79,19 +101,20 @@
     }
 
     gestures {
-        workspace_swipe = false
-    }
+               workspace_swipe = true
+               workspace_swipe_fingers = 3
+           }
 
     # Example windowrule v1
     # windowrule = float, ^(kitty)$
     # Example windowrule v2
     # windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
 
-    windowrule=float,^(kitty)$
+    windowrule=float,^(alacrityy)$
     windowrule=float,^(pavucontrol)$
-    windowrule=center,^(kitty)$
+    windowrule=center,^(alacrityy)$
     windowrule=float,^(blueman-manager)$
-    windowrule=size 600 500,^(kitty)$
+    windowrule=size 600 500,^(alacrityy)$
     windowrule=size 934 525,^(mpv)$
     windowrule=float,^(mpv)$
     windowrule=center,^(mpv)$
