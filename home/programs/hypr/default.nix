@@ -12,22 +12,22 @@
 
   #test later systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
   wayland.windowManager.hyprland = {
+    package = pkgs.hyprland;
     enable = true;
     systemd.enable = true;
+    systemd.enableXdgAutostart = true;
+    xwayland.enable = true;
     extraConfig = ''
 
     # Monitor
-    monitor=DP-1,1920x1080@144,0x0,1
+    monitor=,highres,auto,1
 
     # Autostart
     exec-once = dunst
 
     source = /home/tomasz/.config/hypr/colors
     exec = pkill waybar & sleep 0.5 && waybar
-    exec-once = swww init & sleep 0.5 && exec wallpaper_random
-    # exec-once = wallpaper_random
-
-    # Set en layout at startup
+    exec-once = swww init & sleep 0.5
 
     # Input config
     input {
