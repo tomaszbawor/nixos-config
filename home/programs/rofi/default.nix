@@ -7,14 +7,14 @@
   };
 
   home.file.".config/rofi/launchers" = {
-        source = ./launchers;
-        recursive = true;
-      };
+    source = ./launchers;
+    recursive = true;
+  };
 
-      home.file.".config/rofi/colors" = {
-              source = ./colors;
-              recursive = true;
-            };
+  home.file.".config/rofi/colors" = {
+    source = ./colors;
+    recursive = true;
+  };
 
   home.file.".config/rofi/theme.rasi".text = ''
 

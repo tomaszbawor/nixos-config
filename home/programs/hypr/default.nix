@@ -11,9 +11,9 @@
   ];
 
   home.file.".config/hypr/scripts" = {
-        source = ./scripts;
-        recursive = true;
-      };
+    source = ./scripts;
+    recursive = true;
+  };
 
   #test later systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
   wayland.windowManager.hyprland = {
@@ -54,13 +54,12 @@
     }
 
     general {
-
         gaps_in = 3
         gaps_out = 8
         border_size = 2
         col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
         col.inactive_border = rgba(595959aa)
-resize_on_border
+        resize_on_border = true
 
         layout = dwindle
     }
