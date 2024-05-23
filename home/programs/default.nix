@@ -46,6 +46,7 @@
     wget
     grim
     slurp
+    wlogout
     wl-clipboard
     pamixer
     mpc-cli

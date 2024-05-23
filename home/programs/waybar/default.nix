@@ -219,7 +219,7 @@
       };
       "custom/powermenu" = {
         "format" = "";
-        "on-click" = "pkill rofi || ~/.config/hypr/scripts/Wlogout.sh";
+        "on-click" = "pkill rofi || power_button";
         "tooltip" = false;
       };
       "tray" = {
