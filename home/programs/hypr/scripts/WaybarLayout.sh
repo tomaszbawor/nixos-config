@@ -9,7 +9,7 @@ IFS=$'\n\t'
 waybar_layouts="$HOME/.config/waybar/configs"
 waybar_config="$HOME/.config/waybar/config"
 SCRIPTSDIR="$HOME/.config/hypr/scripts"
-rofi_config="$HOME/.config/rofi/launchers/tipe04/style-3.rasi" # type-4 style-3
+rofi_config="$HOME/.config/rofi/launchers/type-04/style-3.rasi" # type-4 style-3
 
 # Function to display menu options
 menu() {

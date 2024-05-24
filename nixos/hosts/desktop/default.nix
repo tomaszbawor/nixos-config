@@ -7,9 +7,6 @@
     package = hyprland.packages.${pkgs.system}.hyprland;
   };
 
-
-
-
 }
 
 
