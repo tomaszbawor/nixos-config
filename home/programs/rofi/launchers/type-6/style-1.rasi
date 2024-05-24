@@ -87,6 +87,7 @@ inputbar {
     text-color:                  @foreground;
     children:                    [ "textbox-prompt-colon", "entry" ];
 }
+
 textbox-prompt-colon {
     enabled:                     true;
     expand:                      false;
@@ -94,6 +95,7 @@ textbox-prompt-colon {
     background-color:            inherit;
     text-color:                  inherit;
 }
+
 entry {
     enabled:                     true;
     background-color:            inherit;
@@ -151,18 +153,22 @@ element {
     text-color:                  @foreground;
     cursor:                      pointer;
 }
+
 element normal.normal {
     background-color:            inherit;
     text-color:                  inherit;
 }
+
 element normal.urgent {
     background-color:            @urgent;
     text-color:                  @foreground;
 }
+
 element normal.active {
     background-color:            @active;
     text-color:                  @foreground;
 }
+
 element selected.normal {
     background-color:            @selected;
     text-color:                  @foreground;
@@ -201,6 +207,7 @@ textbox {
     vertical-align:              0.5;
     horizontal-align:            0.0;
 }
+
 error-message {
     padding:                     15px;
     border-radius:               20px;

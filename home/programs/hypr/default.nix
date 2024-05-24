@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, hyprland, pkgs, ... }:
 
 {
   imports = [
@@ -17,7 +17,7 @@
 
   #test later systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
   wayland.windowManager.hyprland = {
-    package = pkgs.hyprland;
+    package = hyprland.packages.${pkgs.system}.hyprland;
     enable = true;
     systemd.enable = true;
     systemd.enableXdgAutostart = true;
@@ -54,7 +54,7 @@
     }
 
     general {
-        gaps_in = 3
+        gaps_in = 4
         gaps_out = 8
         border_size = 2
         col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
@@ -62,6 +62,11 @@
         resize_on_border = true
 
         layout = dwindle
+    }
+
+    decoration {
+     rounding = 8
+     drop_shadow = true
     }
 
        animations {
@@ -121,7 +126,6 @@
 
     $mainMod = SUPER
     bind = $mainMod, G, fullscreen,
-
 
     bind = $mainMod, RETURN, exec, alacritty
     bind = $mainMod, B, exec, brave
