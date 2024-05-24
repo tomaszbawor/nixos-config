@@ -8,17 +8,12 @@
     ./rofi
     ./waybar
     ./zsh
-
   ];
 
 
   home.packages = (with pkgs; [
 
     #User Apps
-    celluloid
-
-    librewolf
-    cool-retro-term
     bibata-cursors
     vscode
     lollypop

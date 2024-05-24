@@ -44,7 +44,7 @@
         kb_options =
         kb_rules =
 
-        follow_mouse = 1
+        follow_mouse = 2
 
         touchpad {
             natural_scroll = false
