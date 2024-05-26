@@ -52,7 +52,7 @@
   time.timeZone = "Europe/Warsaw";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "pl_PL.UTF-8";
+  i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "pl_PL.UTF-8";
     LC_IDENTIFICATION = "pl_PL.UTF-8";
@@ -69,7 +69,10 @@
   services.xserver = {
     enable = true; # Enable the X11 windowing system.
     displayManager = {
-      gdm.enable = true; # Enable the GNOME Desktop Environment.
+      gdm = {
+        enable = true;
+        autoSuspend = false;
+      };
     };
 
     desktopManager = {
@@ -164,6 +167,11 @@
   environment.systemPackages = with pkgs; [
     vim
     wget
+
+    # Gnome
+    gnome.gnome-tweaks
+    gnomeExtensions.forge
+
   ];
 
   system.autoUpgrade = {
