@@ -96,32 +96,7 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  ## Video
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-  };
 
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = false;
-    powerManagement.finegrained = false;
-
-    open = false;
-    nvidiaSettings = true;
-
-    package = config.boot.kernelPackages.nvidiaPackages.production;
-    #    ### Driver Override example
-    #    package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-    #      version = "555.42.02";
-    #      sha256_64bit = "sha256-k7cI3ZDlKp4mT46jMkLaIrc2YUx1lh1wj/J4SVSHWyk=";
-    #      sha256_aarch64 = "sha256-rtDxQjClJ+gyrCLvdZlT56YyHQ4sbaL+d5tL4L4VfkA=";
-    #      openSha256 = "sha256-rtDxQjClJ+gyrCLvdZlT56YyHQ4sbaL+d5tL4L4VfkA=";
-    #      settingsSha256 = "sha256-rtDxQjClJ+gyrCLvdZlT56YyHQ4sbaL+d5tL4L4VfkA=";
-    #      persistencedSha256 = lib.fakeSha256;
-    #    };
-  };
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -146,23 +121,17 @@
     users.tomasz = {
       isNormalUser = true;
       description = "tomasz";
-      extraGroups = [ "networkmanager" "wheel" "docker" ];
+      extraGroups = [ "networkmanager" "wheel" ];
     };
     defaultUserShell = pkgs.zsh;
   };
 
   environment.variables = {
     NIXPKGS_ALLOW_UNFREE = "1";
-    WLR_NO_HARDWARE_CURSORS = "1";
   };
 
   nixpkgs.config = {
     allowUnfree = true;
-    nvidia.acceptLicense = true;
-    permittedInsecurePackages = [
-      "electron-25.9.0"
-      "electron-24.8.6"
-    ];
   };
 
   # List packages installed in system profile. To search, run:
@@ -191,9 +160,6 @@
 
     zsh.enable = true; # Install ZSH to the system
   };
-
-  # Docker
-  virtualisation.docker.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
