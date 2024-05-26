@@ -41,7 +41,6 @@
     installPhase = "cp -r customize/nixos $out";
   };
 
-
   # Networking
   networking = {
     hostName = "tomasz-nixos-desktop"; # Define your hostname.
@@ -53,6 +52,7 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
+
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "pl_PL.UTF-8";
     LC_IDENTIFICATION = "pl_PL.UTF-8";
@@ -72,6 +72,7 @@
       gdm = {
         enable = true;
         autoSuspend = false;
+
       };
     };
 
@@ -96,8 +97,6 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-
-
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -114,7 +113,6 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
-
 
   # Define a user account
   users = {
