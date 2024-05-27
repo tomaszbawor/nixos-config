@@ -12,6 +12,8 @@
     allowUnfreePredicate = _: true;
   };
 
+
+
   home.packages = [
 
     # terminal tools
@@ -81,7 +83,12 @@
     "org/gnome/shell/extensions/user-theme" = {
       name = "Tokyonight-Dark-B-LB";
     };
-    #
+
+    "org/gnome/desktop/background" = {
+      picture-uri = "file:///home/tomasz/.wallpapers/wallpaper3.png";
+      picture-uri-dark = "file:///home/tomasz/.wallpapers/wallpaper3.png";
+    };
+
   };
 
   home.sessionVariables = {
@@ -92,7 +99,7 @@
 
   home.file = {
     ".config/nvim" = { source = ./../nvim; recursive = true; };
+    ".wallpapers" = { source = ./wallpapers; recursive = true; };
   };
-
 
 }

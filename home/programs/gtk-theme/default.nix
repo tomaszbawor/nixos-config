@@ -4,7 +4,7 @@
     enable = true;
 
     font = {
-      name = "JetBrains Mono";
+      name = "FiraCode Nerd Font Mono";
       package = pkgs.jetbrains-mono;
     };
 
