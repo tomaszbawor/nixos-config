@@ -5,7 +5,7 @@
 
     font = {
       name = "FiraCode Nerd Font Mono";
-      package = pkgs.jetbrains-mono;
+      package = pkgs.fira;
     };
 
     iconTheme = {
