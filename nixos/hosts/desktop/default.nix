@@ -3,6 +3,7 @@
   imports = [
     ./nvidia
     ./docker
+    ./steam
   ];
 
 

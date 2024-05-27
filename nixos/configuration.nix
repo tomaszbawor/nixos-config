@@ -151,11 +151,6 @@
 
   # Programs
   programs = {
-    steam = {
-      enable = true; # Enable Steam
-      gamescopeSession.enable = true;
-    };
-
     zsh.enable = true; # Install ZSH to the system
   };
 
