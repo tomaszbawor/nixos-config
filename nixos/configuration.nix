@@ -19,26 +19,27 @@
     '';
   };
 
-  # Bootloader.
-  boot.loader.efi.efiSysMountPoint = "/boot";
-
-
-  boot.loader.grub.enable = true;
-  boot.loader.grub.devices = [ "nodev" ];
-  boot.loader.grub.efiInstallAsRemovable = true;
-  boot.loader.grub.efiSupport = true;
-  boot.loader.grub.useOSProber = true;
-
-  boot.loader.grub.theme = pkgs.stdenv.mkDerivation {
-    pname = "distro-grub-themes";
-    version = "3.1";
-    src = pkgs.fetchFromGitHub {
-      owner = "AdisonCavani";
-      repo = "distro-grub-themes";
-      rev = "v3.1";
-      hash = "sha256-ZcoGbbOMDDwjLhsvs77C7G7vINQnprdfI37a9ccrmPs=";
+  # Bootloader config
+  boot.loader = {
+    efi.efiSysMountPoint = "/boot";
+    grub = {
+      enable = true;
+      devices = [ "nodev" ];
+      efiInstallAsRemovable = true;
+      efiSupport = true;
+      useOSProber = true;
+      theme = pkgs.stdenv.mkDerivation {
+        pname = "distro-grub-themes";
+        version = "3.1";
+        src = pkgs.fetchFromGitHub {
+          owner = "AdisonCavani";
+          repo = "distro-grub-themes";
+          rev = "v3.1";
+          hash = "sha256-ZcoGbbOMDDwjLhsvs77C7G7vINQnprdfI37a9ccrmPs=";
+        };
+        installPhase = "cp -r customize/nixos $out";
+      };
     };
-    installPhase = "cp -r customize/nixos $out";
   };
 
   # Networking
@@ -106,12 +107,6 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
 
   # Define a user account
@@ -124,6 +119,8 @@
     defaultUserShell = pkgs.zsh;
   };
 
+
+  # Allow Nixpkgs to install unfree software
   environment.variables = {
     NIXPKGS_ALLOW_UNFREE = "1";
   };
@@ -132,8 +129,7 @@
     allowUnfree = true;
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  # List packages installed in system profile
   environment.systemPackages = with pkgs; [
     vim
     wget
@@ -149,36 +145,11 @@
     channel = "https://nixos.org/channels/nixos-23.11";
   };
 
-  # Programs
+  # Enabling ZSH on system level
   programs = {
     zsh.enable = true; # Install ZSH to the system
   };
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
 
 }
