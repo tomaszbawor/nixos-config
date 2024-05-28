@@ -86,8 +86,8 @@
     };
 
     "org/gnome/desktop/background" = {
-      picture-uri = "file:///home/tomasz/.wallpapers/wallpaper3.png";
-      picture-uri-dark = "file:///home/tomasz/.wallpapers/wallpaper3.png";
+      picture-uri = "file:///home/tomasz/.wallpapers/wallpaper4.jpg";
+      picture-uri-dark = "file:///home/tomasz/.wallpapers/wallpaper4.jpg";
     };
 
   };
