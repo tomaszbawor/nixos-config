@@ -14,13 +14,13 @@
     };
 
     theme = {
-      name = "Tokyonight-Dark-B-LB";
-      package = pkgs.tokyo-night-gtk;
+      name = "Nordic";
+      package = pkgs.nordic;
     };
 
     cursorTheme = {
-      name = "Bibata-Modern-Classic";
-      package = pkgs.bibata-cursors;
+      name = "Nordic-cursors";
+      package = pkgs.nordic;
     };
   };
 }

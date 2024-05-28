@@ -1,18 +1,19 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
 
   imports = [
+    inputs.nix-colors.homeManagerModules.default
     ./programs
   ];
 
   programs.home-manager.enable = true;
 
+  colorScheme = inputs.nix-colors.colorSchemes.nord;
+
   nixpkgs.config = {
     allowUnfreePredicate = _: true;
   };
-
-
 
   home.packages = [
 
@@ -81,7 +82,7 @@
     };
 
     "org/gnome/shell/extensions/user-theme" = {
-      name = "Tokyonight-Dark-B-LB";
+      name = "Nordic";
     };
 
     "org/gnome/desktop/background" = {
