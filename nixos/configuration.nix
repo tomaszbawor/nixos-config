@@ -134,8 +134,11 @@
     vim
     wget
 
+   # Lazy Vim deps
     gcc
     zig
+    unzip
+    # Lazy Vim deps END
 
     # Gnome
     gnome.gnome-tweaks
