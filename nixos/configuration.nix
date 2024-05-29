@@ -134,6 +134,9 @@
     vim
     wget
 
+    gcc
+    zig
+
     # Gnome
     gnome.gnome-tweaks
     gnomeExtensions.forge

@@ -89,7 +89,6 @@
       picture-uri = "file:///home/tomasz/.wallpapers/wallpaper4.jpg";
       picture-uri-dark = "file:///home/tomasz/.wallpapers/wallpaper4.jpg";
     };
-
   };
 
   home.sessionVariables = {

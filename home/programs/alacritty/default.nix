@@ -50,6 +50,9 @@
       };
 
       window = {
+        blur = true;
+        opacity = 0.9;
+        decorations = "Buttonless";
         padding = {
           x = 12;
           y = 12;
