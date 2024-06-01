@@ -6,5 +6,6 @@
     ./steam
   ];
 
-
+  # Disable autosuspend deamon
+  services.autosuspend.enable = false;
 }

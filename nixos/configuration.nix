@@ -134,7 +134,7 @@
     vim
     wget
 
-   # Lazy Vim deps
+    # Lazy Vim deps
     gcc
     zig
     unzip
