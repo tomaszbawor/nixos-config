@@ -8,4 +8,7 @@
 
   # Disable autosuspend deamon
   services.autosuspend.enable = false;
+
+  # Disable power management
+  powerManagement.enable = false;
 }

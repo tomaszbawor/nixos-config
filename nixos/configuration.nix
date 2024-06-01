@@ -19,6 +19,9 @@
     '';
   };
 
+# Kernel version
+    boot.kernelPackages = pkgs.linuxPackages_6_9;
+
   # Bootloader config
   boot.loader = {
     efi.efiSysMountPoint = "/boot";
@@ -73,7 +76,6 @@
       gdm = {
         enable = true;
         autoSuspend = false;
-
       };
     };
 
