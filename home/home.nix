@@ -40,6 +40,7 @@
     pkgs.vscode
     pkgs.jetbrains.idea-ultimate
     pkgs.jetbrains.webstorm
+    pkgs.jetbrains.rust-rover
 
     # applications
     pkgs._1password-gui
