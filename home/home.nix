@@ -31,11 +31,15 @@
 
     # programming
     pkgs.rustup
+
+    # Node Version Manager
     pkgs.nodejs_20
+    pkgs.nodenv
 
     # Ides
     pkgs.vscode
     pkgs.jetbrains.idea-ultimate
+    pkgs.jetbrains.webstorm
 
     # applications
     pkgs._1password-gui
