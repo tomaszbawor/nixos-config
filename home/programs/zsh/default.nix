@@ -4,6 +4,11 @@
 , ...
 }: {
 
+  home.packages = [
+    pkgs.bat # Better cat
+    pkgs.eza # Better LS
+  ];
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -26,5 +31,21 @@
       gb = "./gradlew build";
       gkf = "./gradlew ktlintFormat";
     };
+  };
+
+  # Helper programs used in my ZSH Setup
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
   };
 }

@@ -7,6 +7,9 @@
     ./programs
   ];
 
+  home.stateVersion = "23.11";
+
+
   programs.home-manager.enable = true;
 
   colorScheme = inputs.nix-colors.colorSchemes.nord;
@@ -21,8 +24,7 @@
     pkgs.nixpkgs-fmt
     pkgs.jq
     pkgs.ripgrep
-    pkgs.bat
-    pkgs.eza
+
     pkgs.neovim
 
     # git
@@ -36,12 +38,6 @@
     pkgs.nodejs_20
     pkgs.nodenv
 
-    # Ides
-    pkgs.vscode
-    pkgs.jetbrains.idea-ultimate
-    pkgs.jetbrains.webstorm
-    pkgs.jetbrains.rust-rover
-
     # applications
     pkgs._1password-gui
     pkgs.obsidian
@@ -51,21 +47,6 @@
     # fonts
     (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
-
-  programs.zoxide = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
-  programs.fzf = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
-  programs.starship = {
-    enable = true;
-    enableZshIntegration = true;
-  };
 
   # Git Configuration 
   programs.git = {
@@ -100,8 +81,8 @@
     EDITOR = "nvim";
   };
 
-  home.stateVersion = "23.11";
 
+  ## Mount Files
   home.file = {
     ".config/nvim" = { source = ./../nvim; recursive = true; };
     ".wallpapers" = { source = ./wallpapers; recursive = true; };

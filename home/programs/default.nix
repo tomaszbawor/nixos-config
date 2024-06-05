@@ -3,5 +3,6 @@
     ./alacritty
     ./zsh
     ./gtk-theme
+    ./ides
   ];
 }
