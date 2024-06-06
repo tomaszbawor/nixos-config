@@ -4,6 +4,7 @@
     ./nvidia
     ./docker
     ./steam
+    ./hyprland
   ];
 
   # Disable autosuspend deamon
