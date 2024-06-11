@@ -150,7 +150,7 @@
 
   system.autoUpgrade = {
     enable = true;
-    channel = "https://nixos.org/channels/nixos-23.11";
+    channel = "https://nixos.org/channels/nixos-24.05";
   };
 
   # Enabling ZSH on system level
@@ -158,6 +158,6 @@
     zsh.enable = true; # Install ZSH to the system
   };
 
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "24.05"; # Did you read the comment?
 
 }
