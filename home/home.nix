@@ -40,7 +40,7 @@
 
     # applications
     pkgs._1password-gui
-    pkgs.obsidian
+    #pkgs.obsidian
     pkgs.bruno
     pkgs.brave
 
