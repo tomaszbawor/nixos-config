@@ -143,7 +143,7 @@
     # Lazy Vim deps END
 
     # Gnome
-    gnome.gnome-tweaks
+    gnome-tweaks
     gnomeExtensions.forge
 
   ];
