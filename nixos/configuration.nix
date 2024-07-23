@@ -27,6 +27,7 @@
     efi.efiSysMountPoint = "/boot";
     grub = {
       enable = true;
+      configurationLimit = 10;
       devices = [ "nodev" ];
       efiInstallAsRemovable = true;
       efiSupport = true;

@@ -5,8 +5,7 @@
 
 {
   imports =
-    [
-      (modulesPath + "/installer/scan/not-detected.nix")
+    [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "sd_mod" ];
@@ -15,14 +14,12 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    {
-      device = "/dev/disk/by-uuid/81c09893-9f42-4e26-a05e-e51428186e7e";
+    { device = "/dev/disk/by-uuid/81c09893-9f42-4e26-a05e-e51428186e7e";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-uuid/14BA-0231";
+    { device = "/dev/disk/by-uuid/14BA-0231";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
@@ -34,7 +31,7 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.br-59c76283a3fd.useDHCP = lib.mkDefault true;
+  # networking.interfaces.br-9788e1183579.useDHCP = lib.mkDefault true;
   # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp3s0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp0s20f0u2.useDHCP = lib.mkDefault true;
