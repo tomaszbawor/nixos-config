@@ -146,7 +146,6 @@
     # Gnome
     gnome-tweaks
     gnomeExtensions.forge
-
   ];
 
   system.autoUpgrade = {
@@ -157,6 +156,7 @@
   # Enabling ZSH on system level
   programs = {
     zsh.enable = true; # Install ZSH to the system
+    nix-ld.enable = true; # Enable nix-ld
   };
 
   system.stateVersion = "24.05"; # Did you read the comment?
