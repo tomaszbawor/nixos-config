@@ -46,6 +46,8 @@
     };
   };
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   # Networking
   networking = {
     hostName = "tomasz-nixos-desktop"; # Define your hostname.

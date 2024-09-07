@@ -46,6 +46,7 @@
 
     # fonts
     (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    pkgs.neofetch
   ];
 
   # Git Configuration 
