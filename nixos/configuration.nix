@@ -148,6 +148,10 @@
     # Gnome
     gnome-tweaks
     gnomeExtensions.forge
+
+    # Gleam
+    erlang
+    gleam
   ];
 
   system.autoUpgrade = {
