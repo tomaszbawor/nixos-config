@@ -1,10 +1,9 @@
 { config, lib, pkgs, ... }: {
 
-  ## Video
-  hardware.opengl = {
+  ## Video drivers
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
 
   hardware.nvidia = {
@@ -18,11 +17,10 @@
     #    package = config.boot.kernelPackages.nvidiaPackages.production;
     ### Driver Override example
     package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-      version = "555.42.02";
-      sha256_64bit = "sha256-k7cI3ZDlKp4mT46jMkLaIrc2YUx1lh1wj/J4SVSHWyk=";
-      sha256_aarch64 = "sha256-rtDxQjClJ+gyrCLvdZlT56YyHQ4sbaL+d5tL4L4VfkA=";
-      openSha256 = "sha256-rtDxQjClJ+gyrCLvdZlT56YyHQ4sbaL+d5tL4L4VfkA=";
-      settingsSha256 = "sha256-rtDxQjClJ+gyrCLvdZlT56YyHQ4sbaL+d5tL4L4VfkA=";
+      version = "560.35.03";
+      sha256_64bit = "sha256-8pMskvrdQ8WyNBvkU/xPc/CtcYXCa7ekP73oGuKfH+M=";
+      openSha256 = "sha256-PMh5efbSEq7iqEMBr2+VGQYkBG73TGUh6FuDHZhmwHk=";
+      settingsSha256 = "sha256-ZpuVZybW6CFN/gz9rx+UJvQ715FZnAOYfHn5jt5Z2C8=";
       persistencedSha256 = lib.fakeSha256;
     };
   };

@@ -20,13 +20,14 @@
   };
 
   # Kernel version
-  boot.kernelPackages = pkgs.linuxPackages_6_9;
+#  boot.kernelPackages = pkgs.linuxPackages_6_9;
 
   # Bootloader config
   boot.loader = {
     efi.efiSysMountPoint = "/boot";
     grub = {
       enable = true;
+      configurationLimit = 10;
       devices = [ "nodev" ];
       efiInstallAsRemovable = true;
       efiSupport = true;
@@ -44,6 +45,8 @@
       };
     };
   };
+
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Networking
   networking = {
@@ -101,7 +104,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
+  # sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -143,21 +146,25 @@
     # Lazy Vim deps END
 
     # Gnome
-    gnome.gnome-tweaks
+    gnome-tweaks
     gnomeExtensions.forge
 
+    # Gleam
+    erlang
+    gleam
   ];
 
   system.autoUpgrade = {
     enable = true;
-    channel = "https://nixos.org/channels/nixos-23.11";
+    channel = "https://nixos.org/channels/nixos-24.05";
   };
 
   # Enabling ZSH on system level
   programs = {
     zsh.enable = true; # Install ZSH to the system
+    nix-ld.enable = true; # Enable nix-ld
   };
 
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "24.05"; # Did you read the comment?
 
 }

@@ -7,7 +7,7 @@
     ./programs
   ];
 
-  home.stateVersion = "23.11";
+  home.stateVersion = "24.05";
 
 
   programs.home-manager.enable = true;
@@ -40,12 +40,13 @@
 
     # applications
     pkgs._1password-gui
-    pkgs.obsidian
+    #pkgs.obsidian
     pkgs.bruno
     pkgs.brave
 
     # fonts
     (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    pkgs.neofetch
   ];
 
   # Git Configuration 
