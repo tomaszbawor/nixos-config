@@ -3,7 +3,7 @@
 , lib
 , ...
 }: {
-  home.packages = lib.optionals config.programs.alacritty.enable [ pkgs.nerdfonts ];
+  home.packages = lib.optionals config.programs.alacritty.enable [ pkgs.nerd-fonts.fira-mono ];
 
   programs.alacritty = {
     enable = true;
