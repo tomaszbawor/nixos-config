@@ -42,7 +42,7 @@
     pkgs._1password-gui
     #pkgs.obsidian
     pkgs.bruno
-    pkgs.brave
+    pkgs.google-chrome
 
     # fonts
     pkgs.nerd-fonts.jetbrains-mono
