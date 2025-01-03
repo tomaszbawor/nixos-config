@@ -20,7 +20,7 @@
   };
 
   # Kernel version
-#  boot.kernelPackages = pkgs.linuxPackages_6_9;
+  #  boot.kernelPackages = pkgs.linuxPackages_6_9;
 
   # Bootloader config
   boot.loader = {

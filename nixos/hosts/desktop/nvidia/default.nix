@@ -14,7 +14,7 @@
     open = false;
     nvidiaSettings = true;
 
-    #    package = config.boot.kernelPackages.nvidiaPackages.production;
+    package = config.boot.kernelPackages.nvidiaPackages.production;
     ### Driver Override example
     #package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
     #  version = "560.35.03";
