@@ -1,7 +1,7 @@
 {
   imports = [
     ./alacritty
-    ./zsh
+    ./fish
     ./gtk-theme
     ./ides
   ];

@@ -121,7 +121,7 @@
       description = "tomasz";
       extraGroups = [ "networkmanager" "wheel" ];
     };
-    defaultUserShell = pkgs.zsh;
+    defaultUserShell = pkgs.fish;
   };
 
 
@@ -156,15 +156,14 @@
 
   system.autoUpgrade = {
     enable = true;
-    channel = "https://nixos.org/channels/nixos-24.05";
+    channel = "https://nixos.org/channels/nixos-24.11";
   };
 
-  # Enabling ZSH on system level
   programs = {
-    zsh.enable = true; # Install ZSH to the system
+    fish.enable = true;
     nix-ld.enable = true; # Enable nix-ld
   };
 
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "24.11"; # Did you read the comment?
 
 }
