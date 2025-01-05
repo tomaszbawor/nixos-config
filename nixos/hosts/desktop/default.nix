@@ -5,6 +5,7 @@
     ./docker
     ./steam
     ./hyprland
+    ./virtualbox
   ];
 
   # Disable autosuspend deamon
