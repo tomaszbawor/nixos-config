@@ -54,6 +54,8 @@
     networkmanager.enable = true;
   };
 
+  # Make virtualbox work on kernel 6.12
+  boot.kernelParams = [ "kvm.enable_virt_at_load=0" ];
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
 

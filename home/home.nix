@@ -23,6 +23,7 @@
     pkgs.nixpkgs-fmt
     pkgs.jq
     pkgs.ripgrep
+    pkgs.zellij
 
     pkgs.neovim
 
@@ -36,6 +37,9 @@
     # Node Version Manager
     pkgs.nodejs_20
     pkgs.nodenv
+
+    # ansible 
+    pkgs.ansible
 
     # applications
     pkgs._1password-gui
