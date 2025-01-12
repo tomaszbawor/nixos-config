@@ -40,6 +40,7 @@
 
     # ansible 
     pkgs.ansible
+    pkgs.sshpass
 
     # applications
     pkgs._1password-gui
