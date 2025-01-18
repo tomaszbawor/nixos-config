@@ -54,6 +54,11 @@
     networkmanager.enable = true;
   };
 
+  fileSystems."/home/tomasz/synology" = {
+    device = "192.168.1.10:/volume1/homes";
+    fsType = "nfs";
+  };
+
   # Make virtualbox work on kernel 6.12
   boot.kernelParams = [ "kvm.enable_virt_at_load=0" ];
   # Set your time zone.
@@ -146,6 +151,9 @@
     zig
     unzip
     # Lazy Vim deps END
+
+    # Terminal
+    ghostty
 
     # Gnome
     gnome-tweaks
